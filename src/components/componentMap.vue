@@ -57,9 +57,7 @@ export default {
     },
     addMarkers (object) {
       const map = this.mapBlock
-      console.log(object)
       for (let index = 0; index < object.length; index++) {
-        console.log(22)
         map.addLayer(this.newMarker(object[index]))
       }
     },
@@ -99,13 +97,8 @@ export default {
         if (es) {
           coordinate(
             {
-              name: 'Сергй Корнеев',
-              addres: 'xrfkjdf',
-              tel: '+78885888946',
-              tupe: 'Порыв',
               cord: e.coordinate,
-              src: img,
-              priorit: 'Высокий'
+              src: img
             })
           // dataPoint('addNewPoint', {
           //   name: 'Сергй Корнеев',
@@ -118,7 +111,6 @@ export default {
           // })
         }
         map.forEachFeatureAtPixel(e.pixel, function (feature) {
-          console.log(11)
           info.push(feature.get('datas'))
         })
         console.log(info)
@@ -148,6 +140,7 @@ export default {
   watch: {
     coordi () {
       this.addMarkers([this.coordi])
+      this.$emit('coordinatRedact', this.coordi.cord)
     },
     dataPoint () {
       this.addMarkers(this.dataPoint)

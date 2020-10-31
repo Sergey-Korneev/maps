@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import red from '../components/point_red.svg'
-import grean from '../components/point_grean.svg'
+import red from '@/components/point_red.svg'
+import grean from '@/components/point_grean.svg'
 
 Vue.use(Vuex)
 
@@ -28,6 +28,9 @@ export default new Vuex.Store({
   ],
   mutations: {
     addNewPoint (state, data) {
+      if (data.src === '1') {
+        data.src = grean
+      }
       state.push(data)
     }
   },
